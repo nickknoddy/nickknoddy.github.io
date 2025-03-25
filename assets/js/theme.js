@@ -37,7 +37,16 @@ class ThemeManager {
     button.setAttribute('aria-label', 'Toggle theme');
     button.innerHTML = this.theme === 'dark' ? sunIcon : moonIcon;
     button.addEventListener('click', () => this.toggleTheme());
-    document.body.appendChild(button);
+
+    // Find the navigation bar
+    const nav = document.querySelector('.site-nav .page-link');
+    if (nav) {
+      // Add the button to the navigation bar
+      nav.appendChild(button);
+    } else {
+      // Fallback to body if nav not found
+      document.body.appendChild(button);
+    }
   }
 
   setTheme(theme) {
