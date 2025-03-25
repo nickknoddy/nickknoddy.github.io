@@ -1,3 +1,13 @@
+---
+layout: post
+title: "Matrices and Vectors"
+date: 2020-05-27
+author: Nikhil Naidu
+categories: [mathematics, linear-algebra, tutorials]
+tags: [matrices, vectors, octave, matlab, linear-algebra-basics]
+excerpt: "A comprehensive guide to understanding matrices, vectors, and their operations in linear algebra, including practical examples using Octave/Matlab."
+---
+
 # Matrices and Vectors
 
 - Matrices
