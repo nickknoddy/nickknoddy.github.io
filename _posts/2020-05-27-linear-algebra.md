@@ -1,13 +1,3 @@
----
-layout: post
-title: "Matrices and Vectors"
-date: 2020-05-27
-author: Nikhil Naidu
-categories: [mathematics, linear-algebra, tutorials]
-tags: [matrices, vectors, octave, matlab, linear-algebra-basics]
-excerpt: "A comprehensive guide to understanding matrices, vectors, and their operations in linear algebra, including practical examples using Octave/Matlab."
----
-
 # Matrices and Vectors
 
 - Matrices
@@ -22,11 +12,11 @@ excerpt: "A comprehensive guide to understanding matrices, vectors, and their op
   - Elements of the matrix can be accessed using the i or j the term
   - i th term = row && j th term = column
 
-  ![Elements of Matrix.png](/assets/images/linear-algebra/elements-of-matrix.png)
+  ![Elements of Matrix.png](/assets/images/elements-of-matrix.png)
 
 - Vectors
   - It a a matrix with on column and 'n' rows.
-    [Vectors.png](https://drive.google.com/file/d/1w7qNXNp52xG_T1tP__-xSzzDaqqj5Dm0/view?usp=drivesdk)
+    ![Vectors.png](https://drive.google.com/file/d/1w7qNXNp52xG_T1tP__-xSzzDaqqj5Dm0/view?usp=drivesdk)
 - In general, all our vectors and matrices will be 1-indexed. Note that for some programming languages, the arrays are 0-indexed.
 - Matrices are usually denoted by uppercase names while vectors are lowercase.
 - "Scalar" means that an object is a single value, not a vector or matrix.
@@ -189,7 +179,7 @@ excerpt: "A comprehensive guide to understanding matrices, vectors, and their op
 ---
 
 ### Matrix Multiplication Properties
-https://drive.google.com/file/d/16EGeBuG7VKLiBL7sD-dcGqsMPCSNPRRf/view?usp=drivesdk
+
 - Commutative
 
   - Matrices are not commutative
