@@ -45,8 +45,6 @@
   A_23 = A(2,3)
   ```
 
----
-
 ### Addition and Scalar Multiplication
 
 - Matrix Addition || Subtraction
