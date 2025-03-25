@@ -1,3 +1,10 @@
 title: Skill Issue
 description: "Welcome to my awesome blog about technology and programming!"
 theme: minima
+
+# Add custom CSS and JavaScript
+head_scripts:
+  - /assets/js/theme.js
+
+stylesheets:
+  - /assets/css/theme.css
