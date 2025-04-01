@@ -4,6 +4,8 @@ title: "Mechanical Sympathy"
 
 # Mechanical Sympathy
 
+**It is not a blog, more like notes. A lot of the content is from the reference, but the code and outputs are my own.**
+
 ## Introduction
 
 The term "Mechanical Sympathy" was coined by legendary racing driver Jackie Stewart. As a driver, Stewart emphasized that while you don't need to be an engineer to excel in racing, having an understanding of how a car works is crucial to becoming a better driver. His famous quote, "You don’t have to be an engineer to be a racing driver, but you do have to have Mechanical Sympathy," reflects his belief that understanding the mechanics of a car allows a driver to better handle its performance, anticipate issues, and ultimately improve their racing skills.
@@ -140,9 +142,278 @@ All the program data resides in the main memory, and it takes 100-200 cycles to 
 
 We usually have three levels of caches in the processors, called L1, L2 and L3 caches–each larger and slower and farther from the CPU than the previous level. The access latency of the L1 cache is usually 3-4 cycles which is significantly faster than main memory but it is of very small capacity, 32-64 kB on modern X64 hardware.
 
-```mermaid
-CPU Core (Registers: 0-1 cycles) --> L1 Cache (~3-5 cycles) --> L2 Cache (~12-20 cycles) --> L3 Cache (~30-70 cycles) --> Main Memory (~100-500 cycles)
 ```
+CPU Core (Registers: 0-1 cycles) > L1 Cache (~3-5 cycles) > L2 Cache (~12-20 cycles) > L3 Cache (~30-70 cycles) > Main Memory (~100-500 cycles)
+```
+
+**Temporal Locality**
+
+Processors keeps the most recently used data in the L1 cache, anticipating temporal locality. As these caches are small, they also employ an eviction policy to make space for new data. Most of the processors implement some approximate variant of the least recently used eviction (LRU) policy, which means evict cache lines which have not been accessed for a while.
+
+**Spacial Locality**
+Processors stored related data contiguously or nearby in memory and instead of bringing just the value at the requested address into the cache, the cache brings an entire block of data. The block size depends on the memory bus capacity, which is usually 64 bytes on present day hardware.
+
+The CPU caches are also organized to cache these entire blocks rather than caching the exact value that the application requested. Within the cache, these blocks are called cache lines and these are also 64 bytes in size (on X64 hardware at least).
+
+Consider this example: When an application requests an 8-byte long value stored at memory address 130, the hardware doesn't retrieve only those specific bytes. Instead, it fetches the entire 64-byte block starting at address 128 (the nearest 64-byte aligned address) and loads this block into one of the available cache lines. Subsequently, if the program attempts to access any value within the address range of 128-191, that data will already reside in the cache, eliminating the need for additional time-consuming trips to main memory.
+
+Taking advantage of spatial and temporal locality results in improved system performance and better utilization of the memory bandwidth. But doing this requires writing code with mechanical sympathy. Let’s understand with some examples.
+
+Full implementation: Attributes Grouping
+
+```python
+import random
+import timeit
+
+
+class GameEntityScattered:
+    def __init__(self):
+        # Hot path data - scattered
+        self.position_x = 10  # Frequently accessed
+        self.name = "Entity " + str(
+            random.randint(1, 100)
+        )  # Cold data - rarely accessed
+        self.position_y = 10  # Frequently accessed
+        self.description = "A game entity."  # Cold data - rarely accessed
+        self.position_z = 10  # Frequently accessed
+        self.model_path = "/path/to/model.obj"  # Cold data - rarely accessed
+        self.rotation = 10  # Frequently accessed
+        self.id = random.randint(1, 1000)  # Frequently accessed
+
+
+# Benchmark Scattered layout
+def benchmark_scattered(num_entities):
+    entities = [GameEntityScattered() for _ in range(num_entities)]
+
+    for entity in entities:
+        # Access hot path data
+        _ = (
+            entity.position_x
+            + entity.position_y
+            + entity.position_z
+            + entity.rotation
+            + entity.id
+        )
+
+class GameEntityGrouped:
+    def __init__(self):
+        # Hot path data - scattered
+        self.position_x = 10  # Frequently accessed
+        self.position_y = 10  # Frequently accessed
+        self.position_z = 10  # Frequently accessed
+        self.rotation = 10  # Frequently accessed
+        self.id = random.randint(1, 1000)  # Frequently accessed
+
+        # Cold data - rarely accessed
+        self.name = "Entity " + str(random.randint(1, 100))
+        self.description = "A game entity."
+        self.model_path = "/path/to/model.obj"
+
+
+# Benchmark Grouped layout
+def benchmark_grouped(num_entities):
+    entities = [GameEntityGrouped() for _ in range(num_entities)]
+
+    for entity in entities:
+        # Access hot path data
+        _ = (
+            entity.position_x
+            + entity.position_y
+            + entity.position_z
+            + entity.rotation
+            + entity.id
+        )
+
+if __name__ == "__main__":
+    for i in range(4):
+        num_entities = 10**i
+        print(f"Num of entities: {num_entities}")
+
+        execution_time = timeit.timeit(
+            "benchmark_scattered(num_entities)", globals=globals(), number=100
+        )
+        print(f"Average execution time (Scattered) over 100 runs: {execution_time:5f} seconds")
+
+        gr_execution_time = timeit.timeit(
+            "benchmark_grouped(num_entities)", globals=globals(), number=100
+        )
+        print(f"Average execution time (Grouped) over 100 runs: {gr_execution_time:.5f} seconds")
+```
+
+Example Output:
+
+```
+Num of entities: 1
+Average execution time (Scattered) over 100 runs: 0.001057 seconds
+Average execution time (Grouped) over 100 runs: 0.00071 seconds
+
+Num of entities: 10
+Average execution time (Scattered) over 100 runs: 0.012468 seconds
+Average execution time (Grouped) over 100 runs: 0.00751 seconds
+
+Num of entities: 100
+Average execution time (Scattered) over 100 runs: 0.049320 seconds
+Average execution time (Grouped) over 100 runs: 0.05049 seconds
+
+Num of entities: 1000
+Average execution time (Scattered) over 100 runs: 0.452807 seconds
+Average execution time (Grouped) over 100 runs: 0.44467 seconds
+```
+
+Full implementation: Matrix Traversal Sum
+
+```python
+import timeit
+
+a = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16],
+    [17, 18, 19, 20],
+    [21, 22, 23, 24],
+]
+
+
+def matrix_multiply_row_wise():
+    # Variable to store the sum
+    sum = 0
+
+    # Loop through the matrix
+    for i in range(6):  # Outer loop for 6 rows
+        for j in range(4):  # Inner loop for 4 columns
+            sum += a[i][j]  # Add the element to sum
+
+
+def matrix_multiply_col_wise():
+    # Variable to store the sum
+    sum = 0
+
+    # Loop through the matrix column-wise
+    for j in range(4):  # Outer loop for 4 columns
+        for i in range(6):  # Inner loop for 6 rows
+            sum += a[i][j]  # Add the element to sum
+
+
+if __name__ == "__main__":
+
+    for _ in range(8):
+
+        execution_time = timeit.timeit(
+            "matrix_multiply_row_wise()", globals=globals(), number=100
+        )
+
+        print(f"Average execution time (Row) over 100 runs: {execution_time:.10f} seconds")
+
+        col_execution_time = timeit.timeit(
+            "matrix_multiply_col_wise()", globals=globals(), number=100
+        )
+
+        print(
+            f"Average execution time (Column) over 100 runs: {col_execution_time:.10f} seconds"
+        )
+
+```
+
+Example Output:
+
+```
+Average execution time (Row) over 100 runs: 0.0007095990 seconds
+Average execution time (Column) over 100 runs: 0.0004877360 seconds
+
+Average execution time (Row) over 100 runs: 0.0009539990 seconds
+Average execution time (Column) over 100 runs: 0.0011540680 seconds
+
+Average execution time (Row) over 100 runs: 0.0007116180 seconds
+Average execution time (Column) over 100 runs: 0.0006330580 seconds
+
+Average execution time (Row) over 100 runs: 0.0003995010 seconds
+Average execution time (Column) over 100 runs: 0.0004394730 second
+```
+
+As we can see in both examples, the output is not consistent with locality rules, which suggest that we need to investigate Python's memory management further to understand why this is the case.
+
+### Speculative Execution
+
+While the hardware can execute instructions very fast, fetching new instructions from memory takes time. To keep the execution resources in the processor busy, the instructions must be supplied at a fast rate. If programs had a linear structure where one instruction followed another, this wouldn’t be a problem. The processor already prefetches sequential instructions and keeps them cached ahead of time to keep the pipeline fed.
+
+However, program structure is not always linear. All non-trivial programs consist of branches in the form of if/else blocks, switch cases, loops, and function calls. For example, in the case of an if/else conditional block, the value of the condition decides which block of code needs to be executed next. The branch condition itself involves one or more instructions which need to be executed before the processor knows which instructions to fetch next. If the processor waits for that to occur, the pipeline will not be fetching and decoding any new instructions until that time, resulting in a significant drop in the instruction throughput. And the performance penalty doesn’t end there - after the branching direction is determined and the location of the next instruction is known, the instructions from that address need to be fetched and decoded, which is another level of delay (especially if those instructions are not in the cache).
+
+To avoid this performance degradation, the CPU implements branch predictors to predict the target address of branches. But, whenever the branch predictor is wrong, there is a penalty on performance as well. When the processor finally evaluates the branch condition and finds that the branch predictor did a misprediction, it has to flush the pipeline because it was processing the wrong set of instructions. Once the pipeline is flushed, the processor starts to execute the right set of instructions. On modern X64 processors this misprediction can cause a performance penalty of ~20-30 cycles. Modern processors have sophisticated branch predictors which can learn very complex branching patterns and offer accuracy of up to ~95%. But they still depend on predictable branching patterns in code.
+
+Full Implementation:
+
+```python
+import timeit
+
+
+def abs(x):
+    if x >= 0:
+        return x
+
+    return -x
+
+
+def abs_bitwise(x):
+    y = x >> 31
+    return (x**y) - y
+
+
+if __name__ == "__main__":
+    for i in range(-2, 2):
+        print(f"X: {i}")
+
+        execution_time = timeit.timeit("abs(i)", globals=globals(), number=100)
+        print(
+            f"Average execution time (Absolute) over 100 runs: {execution_time:5f} seconds"
+        )
+
+        bt_execution_time = timeit.timeit(
+            "abs_bitwise(i)", globals=globals(), number=100
+        )
+        print(
+            f"Average execution time (Absolute Bitwise) over 100 runs: {bt_execution_time:.5f} seconds"
+        )
+
+        print("")
+
+```
+
+Example Output:
+
+```
+X: -2
+Average execution time (Absolute) over 100 runs: 0.000029 seconds
+Average execution time (Absolute Bitwise) over 100 runs: 0.00012 seconds
+
+X: -1
+Average execution time (Absolute) over 100 runs: 0.000035 seconds
+Average execution time (Absolute Bitwise) over 100 runs: 0.00011 seconds
+
+X: 0
+Average execution time (Absolute) over 100 runs: 0.000014 seconds
+Average execution time (Absolute Bitwise) over 100 runs: 0.00002 seconds
+
+X: 1
+Average execution time (Absolute) over 100 runs: 0.000013 seconds
+Average execution time (Absolute Bitwise) over 100 runs: 0.00006 seconds
+```
+
+## Conclusion
+
+Understanding how processors work "under the hood" is essential for writing truly performant code. Modern CPUs are complex systems with many optimizations that work best when code aligns with their expectations:
+
+- **Instruction pipelining and superscalar execution** enable multiple instructions to be processed simultaneously, but only when we provide independent operations
+- **Memory hierarchy and caching** dramatically reduce latency, but only when our data structures and access patterns exhibit good locality
+- **Speculative execution** keeps the pipeline full through branches, but becomes a performance liability with unpredictable branching patterns
+
+The most effective optimization approach is to:
+
+1. Write clean, maintainable code first
+1. Profile to identify performance bottlenecks
+1. Apply mechanical sympathy principles specifically to those hot spots
+
+As software engineers, we don't need to fight the hardware - we can work with it. When we align our algorithms and data structures with the grain of the processor rather than against it, we achieve that satisfying moment when a program that once took seconds now completes in milliseconds.
 
 ## Reference
 
