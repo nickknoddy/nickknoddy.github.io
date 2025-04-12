@@ -1,3 +1,7 @@
+---
+title: "Machine Learning By Andew Ng - Week 1"
+---
+
 # Welcome
 
 ### <span style='color:blue'>Machine learning is the science getting computers to learn, without explicitly programmed.</span>
