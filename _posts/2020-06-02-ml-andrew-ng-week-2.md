@@ -120,10 +120,6 @@
 pinv( X' * X ) * X' * y
 ```
 
-    [//]: # (unsupported is not supported)
-
-    <br/>
-
 - Comparison Between Gradient Descent & Normal Equation
 
   - n = Normal Equation < 10000 > Gradient Descent
