@@ -1,5 +1,5 @@
 ---
-title: "Machine Learning By Andew Ng - Week 1"
+title: "Machine Learning By Andew Ng - Week 2"
 ---
 
 # <span style='color:green'>Multivariate Linear Regression</span>
