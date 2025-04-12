@@ -1,3 +1,7 @@
+---
+title: "Machine Learning By Andew Ng - Week 1"
+---
+
 # <span style='color:green'>Classification and Representation</span>
 
 ## <span style='color:blue'>Classification</span>
