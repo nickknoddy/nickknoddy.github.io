@@ -641,3 +641,5 @@ A_invA = inv(A)*A
 ```
 
 # Lecture Presentation
+
+<embed src="/assets/pdfs/andrew-ng-ml-week-1.2.pdf" width="100%" height="600px" type="application/pdf">
