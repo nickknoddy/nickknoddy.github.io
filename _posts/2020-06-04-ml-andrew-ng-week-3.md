@@ -2,9 +2,9 @@
 title: "Machine Learning By Andew Ng - Week 3"
 ---
 
-# <span style='color:green'>Classification and Representation</span>
+# Classification and Representation
 
-## <span style='color:blue'>Classification</span>
+## Classification
 
 - Use Cases
 
@@ -24,6 +24,8 @@ title: "Machine Learning By Andew Ng - Week 3"
 
     - conveys something is present
 
+![Classification.png](/assets/images/ml-andrew-ng-week-3/classification.png)
+
 - Example:
 
   - Applying linear regression to a classification problem is not a good idea
@@ -31,6 +33,8 @@ title: "Machine Learning By Andew Ng - Week 3"
     - To attempt classification, one method is to use linear regression and map all predictions greater than 0.5 as a 1 and all less than 0.5 as a 0.
 
     - This method doesn't work well because classification is not actually a linear function.
+
+    ![Example.png](/assets/images/ml-andrew-ng-week-3/example.png)
 
   - Classification
 
@@ -40,17 +44,23 @@ title: "Machine Learning By Andew Ng - Week 3"
 
       - Logistic Regression: 0 ≤ h(x) ≤ 1
 
-## <span style='color:blue'>Hypothesis Representation</span>
+    ![Intro - Logistic Regression.png](/assets/images/ml-andrew-ng-week-3/intro-logistic-regression.png)
+
+## Hypothesis Representation
 
 - Sigmoid function is zero at negative infinity and 1 at positive infinity
 
   - Sigmoid function == Logistic Function
 
+  ![Representation.png](/assets/images/ml-andrew-ng-week-3/representation.png)
+
 - Interpretation Of Hypothesis
 
   - h ( x ) = estimated probability that y = 1 on input
 
-## <span style='color:blue'>Decision Boundary</span>
+  ![Interpretation of Hypothesis.png](/assets/images/ml-andrew-ng-week-3/interpretation-of-hypothesis.png)
+
+## Decision Boundary
 
 - Predict y = 1
 
@@ -60,9 +70,9 @@ title: "Machine Learning By Andew Ng - Week 3"
 
 - Predict y = 0
 
-  - h ( x ) <0.5 : y = 0
+  - h ( x )
 
-  - thetha^T X ≥ 0
+![Logistic Regression.png](/assets/images/ml-andrew-ng-week-3/logistic-regression.png)
 
 - Decision boundary
 
@@ -72,21 +82,29 @@ title: "Machine Learning By Andew Ng - Week 3"
 
   - This is the property of the hypothesis and not of the data
 
+  ![Decision Boundary.png](/assets/images/ml-andrew-ng-week-3/decision-boundary.png)
+
   - Non Linear Decision Boundary
 
     - Decision Boundary doesn't need to be linear
 
     - High order polynomials can also be resulted in a complex decision boundary
 
-# <span style='color:green'>Logistic Regression Model</span>
+    ![Non-Linear DB.png](/assets/images/ml-andrew-ng-week-3/non-linear-db.png)
 
-## <span style='color:blue'>Cost Function</span>
+# Logistic Regression Model
+
+## Cost Function
 
 - Concept
+
+  ![Concept.png](/assets/images/ml-andrew-ng-week-3/concept.png)
 
 - We cannot use the same cost function that we use for linear regression because the Logistic Function will cause the output to be wavy, causing many local optima.
 
 - In other words, it will not be a convex function.
+
+![Cost Function.png](/assets/images/ml-andrew-ng-week-3/cost-function.png)
 
 - Case 1
 
@@ -96,6 +114,8 @@ title: "Machine Learning By Andew Ng - Week 3"
 
     - If our hypothesis approaches 0, then the cost function will approach infinity.
 
+    ![Case 1.png](/assets/images/ml-andrew-ng-week-3/case-1.png)
+
 - Case 2
 
   - When y = 0, we get the following plot for J (theta) vs h ( x )
@@ -104,15 +124,21 @@ title: "Machine Learning By Andew Ng - Week 3"
 
     - If our hypothesis approaches 1, then the cost function will approach infinity.
 
+    ![Case 2.png](/assets/images/ml-andrew-ng-week-3/case-2.png)
+
 - Note that writing the cost function in this way guarantees that J(θ) is convex for logistic regression.
 
-## <span style='color:blue'>Simplified Cost Function and Gradient Descent</span>
+## Simplified Cost Function and Gradient Descent
 
 - Modified Cost Function ( Simple )
 
   - Compress our cost function's two conditional cases into one case:
 
+  ![Simple CF.png](/assets/images/ml-andrew-ng-week-3/simple-cf.png)
+
   - We can fully write out our entire cost function as follows:
+
+  ![Overview.png](/assets/images/ml-andrew-ng-week-3/overview.png)
 
 - Gradient Descent
 
@@ -120,11 +146,16 @@ title: "Machine Learning By Andew Ng - Week 3"
 
   - We still have to simultaneously update all values in theta.
 
-## <span style='color:blue'>Advanced Optimisation</span>
+  ![GD.png](/assets/images/ml-andrew-ng-week-3/gd.png)
+  ![GD-1.png](/assets/images/ml-andrew-ng-week-3/gd-1.png)
+
+## Advanced Optimisation
 
 - Optimisation Algorithm
 
   - Minimising the cost function as efficient as possible
+
+  ![Optimisation Algorithm.png](/assets/images/ml-andrew-ng-week-3/optimisation-algorithm.png)
 
 - Advance Optimisation Algorithms
 
@@ -148,13 +179,19 @@ title: "Machine Learning By Andew Ng - Week 3"
 
     - More complex
 
+  ![Advanced OA.png](/assets/images/ml-andrew-ng-week-3/advanced-oa.png)
+
 - Example 1
 
   - Implementing function minimisation unconstrained
 
     - fminunc() in octave programming
 
+  ![AOA Example.png](/assets/images/ml-andrew-ng-week-3/aoa-example.png)
+
 - Example 2
+
+  ![AOA Example 1.png](/assets/images/ml-andrew-ng-week-3/aoa-example-1.png)
 
 - Octave / Matlab Snippets
 
@@ -177,9 +214,9 @@ initialTheta = zeros(2,1);
    [optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);
 ```
 
-# <span style='color:green'>Multi-class Classification</span>
+# Multi-class Classification
 
-## <span style='color:blue'>Multi-class Classification: One-vs-all</span>
+## Multi-class Classification: One-vs-all
 
 - Instead of y = {0,1} we will expand our definition so that y = {0,1...n}.
 
@@ -195,19 +232,25 @@ initialTheta = zeros(2,1);
 
 - Difference in data visualisation in binary classification and multi-class classification
 
+  ![DIfference of Data Visualisation.png](/assets/images/ml-andrew-ng-week-3/difference-of-data-visualisation.png)
+
 - One vs All Algorithm
 
   - It chooses as first class and other classes as second class and does the Binary logistic regression among them.
 
   - It changes the active class and repeats until all the classes have been covered as the active class.
 
+  ![OvsA Algorithm.png](/assets/images/ml-andrew-ng-week-3/ovsa-algorithm.png)
+
 - Using the algorithm
 
   - Select the i for which the hypothesis is the maximum as the prediction
 
-# <span style='color:green'>Solving the Problem of Overfitting</span>
+  ![Testing.png](/assets/images/ml-andrew-ng-week-3/testing.png)
 
-## <span style='color:blue'>The Problem of Overfitting</span>
+# Solving the Problem of Overfitting
+
+## The Problem of Overfitting
 
 - If we have too many features, the learned hypothesis may fit the training set very well ( where cost function is similar to equal to 0 ), but fail to generalise to new examples ( predict prices on new examples )
 
@@ -225,11 +268,17 @@ initialTheta = zeros(2,1);
 
 - Overfitting in Linear Regression
 
+  ![LIR Example.png](/assets/images/ml-andrew-ng-week-3/lir-example.png)
+
 - Overfitting in Logistic Regression
+
+  ![LOR Example.png](/assets/images/ml-andrew-ng-week-3/lor-example.png)
 
 - Causes of Overfitting
 
   - Too many features & Small dataset
+
+  ![Problem.png](/assets/images/ml-andrew-ng-week-3/problem.png)
 
 - Solution to Overfitting
 
@@ -245,7 +294,9 @@ initialTheta = zeros(2,1);
 
     - Works well when we have a lot of features, each of which contributes a bit to predicting y.
 
-## <span style='color:blue'>Cost Function</span>
+  ![Solution.png](/assets/images/ml-andrew-ng-week-3/solution.png)
+
+## Cost Function
 
 - Intuition
 
@@ -257,21 +308,31 @@ initialTheta = zeros(2,1);
 
   - New hypothesis will fits the data better due to extra small terms
 
+  ![Intuition.png](/assets/images/ml-andrew-ng-week-3/intuition.png)
+
 - Regularisation
 
   - The λ, or lambda, is the regularization parameter.
 
   - It determines how much the costs of our theta parameters are inflated.
 
+  ![Regularisation.png](/assets/images/ml-andrew-ng-week-3/regularisation.png)
+
 - Example
+
+  ![Regularisation Example.png](/assets/images/ml-andrew-ng-week-3/regularisation-example.png)
 
 - Regularisation Parameter
 
   - If lambda is chosen to be too large, it may smooth out the function too much and cause underfitting.
 
-## <span style='color:blue'>Regularised Linear Regression</span>
+  ![Regularisation Parameter.png](/assets/images/ml-andrew-ng-week-3/regularisation-parameter.png)
+
+## Regularised Linear Regression
 
 - Regularised Linear Regression
+
+  ![Regularised LIR.png](/assets/images/ml-andrew-ng-week-3/regularised-lir.png)
 
 - Regularised Gradient Descent
 
@@ -283,21 +344,28 @@ initialTheta = zeros(2,1);
 
   - theta_0 is not regularised
 
+  ![Regularised GD.png](/assets/images/ml-andrew-ng-week-3/regularised-gd.png)
+
 - Regularised Normal Equation
 
   - To add in regularisation, the equation is the same as our original, except that we add another term inside the parentheses:
 
+  ![Regularised NE.png](/assets/images/ml-andrew-ng-week-3/regularised-ne.png)
+
 - Regularisation in Non-Invertibility
 
   - Recall that if m < n, then X^T _ X is non-invertible. However, when we add the term λ⋅L, then X^T _ X + λ⋅L becomes invertible.
+    ![Regularised-Non Invertibility.png](/assets/images/ml-andrew-ng-week-3/regularised-non-invertibility.png)
 
-## <span style='color:blue'>Regularised Logistic Regression</span>
+## Regularised Logistic Regression
 
 - Regularised Logistic Regression
 
   - image shows how the regularised function, displayed by the pink line, is less likely to overfit than the non-regularised function represented by the blue line:
 
   - We can regularise this equation by adding a term to the end
+
+  ![Regularised LOR.png](/assets/images/ml-andrew-ng-week-3/regularised-lor.png)
 
 - Regularised Gradient Descent
 
@@ -309,6 +377,13 @@ initialTheta = zeros(2,1);
 
   - computing the equation, we should continuously update the two following equations:
 
+  ![Regularised LOR GD.png](/assets/images/ml-andrew-ng-week-3/regularised-lor-gd.png)
+
 - Regularised Advanced Optimisation
 
-# <span style='color:blue'>Lecture Presentation</span>
+  ![REgularised AO.png](/assets/images/ml-andrew-ng-week-3/regularised-ao.png)
+
+# Lecture Presentation
+
+<embed src="/assets/pdfs/ml-andrew-ng-week-3/andrew-ng-ml-week-3.1.pdf" width="100%" height="600px" type="application/pdf">
+<embed src="/assets/pdfs/ml-andrew-ng-week-3/andrew-ng-ml-week-3.2.pdf" width="100%" height="600px" type="application/pdf">
