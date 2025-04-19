@@ -2,9 +2,9 @@
 title: "Machine Learning By Andew Ng - Week 4"
 ---
 
-# <span style='color:green'>Motivations</span>
+# Motivations
 
-## <span style='color:blue'>Non-linear Hypothesis</span>
+## Non-linear Hypothesis
 
 - Representation
 
@@ -18,11 +18,15 @@ title: "Machine Learning By Andew Ng - Week 4"
 
     - if it is a cubic function of 100 features, hypothesis will be close to 1,70,000
 
+  ![Problem.png](/assets/images/ml-andrew-ng-week-4/problem.png)
+
 - Computer Vision
 
   - Why it is hard ?
 
     - Computer see the matrix of pixel density of the image
+
+    ![Computer Vision Example.png](/assets/images/ml-andrew-ng-week-4/computer-vision-example.png)
 
   - How does it work?
 
@@ -30,19 +34,29 @@ title: "Machine Learning By Andew Ng - Week 4"
 
     - We give a test image to predict, if it's a car or not car.
 
+    ![Computer Vision Example 1.png](/assets/images/ml-andrew-ng-week-4/computer-vision-example-1.png)
+
   - If we have 50 x 50 pixels images, then the n will 2500 ( greyscale ) 7500 ( RGB )
 
-  ## <span style='color:blue'>Neurons and the Brain</span>
+  ![Computer Vision Example 2.png](/assets/images/ml-andrew-ng-week-4/computer-vision-example-2.png)
+
+  ## Neurons and the Brain
 
   - Neural Networks
 
     - Origin: Algorithms that try to mimic the brain
 
+    ![Neural Networks.png](/assets/images/ml-andrew-ng-week-4/neural-networks.png)
+
   - Neural Rewiring Experiments
 
     - Rewiring the auditory cortex with eyes rather than ears, it learns to see or visual discrimination with that tissue
 
+    ![Experiment 1.png](/assets/images/ml-andrew-ng-week-4/experiment-1.png)
+
     - In the same way, by rewiring the somatosensory cortex with the eyes rather than the hands, it learns to visual discrimination with that tissue
+
+    ![Experiment 2.png](/assets/images/ml-andrew-ng-week-4/experiment-2.png)
 
     - It is " one learning algorithm ", whatever input it receives it generalises it perform that particular task.
 
@@ -56,9 +70,11 @@ title: "Machine Learning By Andew Ng - Week 4"
 
     - Implementing 3rd eye in the frog
 
-  # <span style='color:green'>Neural Networks</span>
+    ![Examples.png](/assets/images/ml-andrew-ng-week-4/examples.png)
 
-  ## <span style='color:blue'>Model Representation 1</span>
+  # Neural Networks
+
+  ## Model Representation 1
 
   - Neurons
 
@@ -68,11 +84,15 @@ title: "Machine Learning By Andew Ng - Week 4"
 
     - There is also cell body and nucleus
 
+    ![Neuron Diagram.png](/assets/images/ml-andrew-ng-week-4/neuron-diagram.png)
+
     - Working of a Neuron
 
       - One neuron sends information to other neuron by sending electric pulses ( called "spikes" )
 
       - Axon terminal of one neuron is connected to the dendrites of the other neuron
+
+      ![Working - Neuron.png](/assets/images/ml-andrew-ng-week-4/working-neuron.png)
 
   - Neuron Model
 
@@ -88,6 +108,8 @@ title: "Machine Learning By Andew Ng - Week 4"
 
       - activation function = Hypothesis of logistic
 
+    ![Neuron Model.png](/assets/images/ml-andrew-ng-week-4/neuron-model.png)
+
 - Artificial Neural Network
 
   - First layer is called as the input layer ( x )
@@ -97,6 +119,8 @@ title: "Machine Learning By Andew Ng - Week 4"
   - Layer between the first and the last layer is called as the hidden layer
 
   - First unit of the layer is called the bias unit
+
+  ![Neural Network.png](/assets/images/ml-andrew-ng-week-4/neural-network.png)
 
   - a_i^j = "activation" of unit i in layer j
 
@@ -108,7 +132,9 @@ title: "Machine Learning By Andew Ng - Week 4"
 
   - Our hypothesis output is the logistic function applied to the sum of the values of our activation nodes, which have been multiplied by yet another parameter matrix theta^2 containing the weights for our second layer of nodes.
 
-## <span style='color:blue'>Model Representation 2</span>
+  ![Neural Network 1.png](/assets/images/ml-andrew-ng-week-4/neural-network-1.png)
+
+## Model Representation 2
 
 - Forward Propagation
 
@@ -120,19 +146,29 @@ title: "Machine Learning By Andew Ng - Week 4"
 
   - Adding all these intermediate layers in neural networks allows us to more elegantly produce interesting and more complex non-linear hypotheses.
 
+  ![Forward Propagation.png](/assets/images/ml-andrew-ng-week-4/forward-propagation.png)
+
 - Neural Network learning it's own features
+
+  ![NN Learning Features.png](/assets/images/ml-andrew-ng-week-4/nn-learning-features.png)
 
 - Other Neural Network architectures
 
-# <span style='color:green'>Applications</span>
+  ![NN Architectures.png](/assets/images/ml-andrew-ng-week-4/nn-architectures.png)
 
-## <span style='color:blue'>Examples and Intuitions 1</span>
+# Applications
+
+## Examples and Intuitions 1
 
 - XOR / XNOR
+
+  ![NN XOR:XNOR.png](/assets/images/ml-andrew-ng-week-4/nn-xorxnor.png)
 
 - AND
 
   - A simple example of applying neural networks is by predicting x_1 AND x_2, which is the logical 'and' operator and is only true if both x_1 and x_2 are 1
+
+  ![NN AND.png](/assets/images/ml-andrew-ng-week-4/nn-and.png)
 
 - OR
 
@@ -140,17 +176,25 @@ title: "Machine Learning By Andew Ng - Week 4"
 
   - The following is an example of the logical operator 'OR', meaning either x_1 is true or x_2 is true, or both
 
-## <span style='color:blue'>Examples and Intuitions 2</span>
+  ![NN OR.png](/assets/images/ml-andrew-ng-week-4/nn-or.png)
+
+## Examples and Intuitions 2
 
 - Negation
+
+  ![NN Negation.png](/assets/images/ml-andrew-ng-week-4/nn-negation.png)
 
 - XNOR
 
   - Combining AND, NOT and OR function we have a XNOR operator
 
+  ![NN XNOR.png](/assets/images/ml-andrew-ng-week-4/nn-xnor.png)
+
 - Intuition
 
-## <span style='color:blue'>Multiclass Classification</span>
+  ![NN Intuition.png](/assets/images/ml-andrew-ng-week-4/nn-intuition.png)
+
+## Multiclass Classification
 
 - One-vs-All
 
@@ -160,6 +204,8 @@ title: "Machine Learning By Andew Ng - Week 4"
 
   - This algorithm takes as input an image and classifies it accordingly:
 
+  ![NN OvsA.png](/assets/images/ml-andrew-ng-week-4/nn-ovsa.png)
+
   - Our resulting hypothesis for one set of inputs may look like: hΘ​(x)=[0010​]
 
-# <span style='color:green'>Lecture Presentation</span>
+  ![NN OvsA 1.png](/assets/images/ml-andrew-ng-week-4/nn-ovsa-1.png)
