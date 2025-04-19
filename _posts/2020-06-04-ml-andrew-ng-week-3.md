@@ -385,5 +385,5 @@ initialTheta = zeros(2,1);
 
 # Lecture Presentation
 
-<embed src="/assets/pdfs/ml-andrew-ng-week-3/andrew-ng-ml-week-3.1.pdf" width="100%" height="600px" type="application/pdf">
-<embed src="/assets/pdfs/ml-andrew-ng-week-3/andrew-ng-ml-week-3.2.pdf" width="100%" height="600px" type="application/pdf">
+<embed src="/assets/pdfs/ml-andrew-ng-week-3/ml-andrew-ng-week-3.1.pdf" width="100%" height="600px" type="application/pdf">
+<embed src="/assets/pdfs/ml-andrew-ng-week-3/ml-andrew-ng-week-3.2.pdf" width="100%" height="600px" type="application/pdf">
