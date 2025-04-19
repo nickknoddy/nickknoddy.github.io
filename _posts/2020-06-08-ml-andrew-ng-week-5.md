@@ -2,9 +2,9 @@
 title: "Machine Learning By Andew Ng - Week 5"
 ---
 
-# <span style='color:green'>Cost Function and Backpropagation</span>
+# Cost Function and Backpropagation
 
-## <span style='color:blue'>Cost Function</span>
+## Cost Function
 
 - Let's first define a few variables that we will need to use:
 
@@ -13,6 +13,8 @@ title: "Machine Learning By Andew Ng - Week 5"
   - *s_l*​ = number of units (not counting bias unit) in layer l
 
   - K = number of output units/classes
+
+![NN Classification.png](/assets/images/ml-andrew-ng-week-5/nn-classification.png)
 
 - We have added a few nested summations to account for our multiple output nodes.
 
@@ -26,6 +28,8 @@ title: "Machine Learning By Andew Ng - Week 5"
 
 - As before with logistic regression, we square every term.
 
+![NN CF.png](/assets/images/ml-andrew-ng-week-5/nn-cf.png)
+
 - Note
 
   - the double sum simply adds up the logistic regression costs calculated for each cell in the output layer
@@ -34,7 +38,7 @@ title: "Machine Learning By Andew Ng - Week 5"
 
   - the i in the triple sum does not refer to training example i
 
-## <span style='color:blue'>Backpropagation Algorithm</span>
+## Backpropagation Algorithm
 
 - "Backpropagation" is neural-network terminology for minimizing our cost function, just like what we were doing with gradient descent in logistic and linear regression. Our goal is to compute: min J ( theta )
 
@@ -46,13 +50,21 @@ title: "Machine Learning By Andew Ng - Week 5"
 
 - One training example
 
+![Backpropagation Algorithm.png](/assets/images/ml-andrew-ng-week-5/backpropagation-algorithm.png)
+
 - Multiple training example
+
+![Backpropagation Algorithm 1.png](/assets/images/ml-andrew-ng-week-5/backpropagation-algorithm-1.png)
 
 - Process
 
-## <span style='color:blue'>Backpropagation Intuition</span>
+  ![BP Process.png](/assets/images/ml-andrew-ng-week-5/bp-process.png)
+
+## Backpropagation Intuition
 
 - Forward Propagation
+
+  ![FP.png](/assets/images/ml-andrew-ng-week-5/fp.png)
 
 - Backward Propagation
 
@@ -60,13 +72,17 @@ title: "Machine Learning By Andew Ng - Week 5"
 
   - Recall that our derivative is the slope of a line tangent to the cost function, so the steeper the slope the more incorrect we are.
 
-# <span style='color:green'>Backpropagation in Practice</span>
+  ![BP.png](/assets/images/ml-andrew-ng-week-5/bp.png)
 
-## <span style='color:blue'>Implementation Note: Unrolling Parameters</span>
+# Backpropagation in Practice
+
+## Implementation Note: Unrolling Parameters
 
 - Advance Optimisation
 
   - It needs theta to be in vectors
+
+  ![Advance Optimisation.png](/assets/images/ml-andrew-ng-week-5/advance-optimisation.png)
 
 - Example
 
@@ -74,9 +90,13 @@ title: "Machine Learning By Andew Ng - Week 5"
 
   - Unrolling matrices into vectors in Octave
 
+  ![Example.png](/assets/images/ml-andrew-ng-week-5/example.png)
+
 - Learning Algorithm
 
   - Process of unrolling
+
+  ![Learning Algorithm.png](/assets/images/ml-andrew-ng-week-5/learning-algorithm.png)
 
 - Octave Snippets
 
@@ -95,7 +115,7 @@ Theta2 = reshape(thetaVector(111:220),10,11)
 Theta3 = reshape(thetaVector(221:231),1,11)
 ```
 
-## <span style='color:blue'>Gradient Checking</span>
+## Gradient Checking
 
 - Gradient checking will assure that our backpropagation works as intended.
 
@@ -105,11 +125,17 @@ Theta3 = reshape(thetaVector(221:231),1,11)
 
   - If the value for ϵ\epsilon*ϵ* is too small, we can end up with numerical problems.
 
+  ![Numerical estimation of gradient.png](/assets/images/ml-andrew-ng-week-5/numerical-estimation-of-gradient.png)
+
 - Parameter Vector
+
+  ![Parameter Vector.png](/assets/images/ml-andrew-ng-week-5/parameter-vector.png)
 
 - Process
 
   - So once we compute our gradApprox vector, we can check that gradApprox ≈ deltaVector.
+
+  ![Octave Process.png](/assets/images/ml-andrew-ng-week-5/octave-process.png)
 
 - Notes
 
@@ -129,6 +155,8 @@ Theta3 = reshape(thetaVector(221:231),1,11)
 
     - If you run numerical gradient computation on every iteration of gradient descent ( or in the inner loop of costFunction() ) code will be ver slow
 
+  ![Note.png](/assets/images/ml-andrew-ng-week-5/note.png)
+
   - Octave Snippet
 
 ```matlab
@@ -142,11 +170,13 @@ for i = 1:n,
 end;
 ```
 
-## <span style='color:blue'>Random Initialisation</span>
+## Random Initialisation
 
 - Initial Value of Theta
 
   - We need the initialise theta
+
+  ![Initial Value of theta.png](/assets/images/ml-andrew-ng-week-5/initial-value-of-theta.png)
 
 - Zero Initialisation
 
@@ -156,11 +186,15 @@ end;
 
   - Neural Network will not be able to learn for new features
 
+  ![Zero initialisation.png](/assets/images/ml-andrew-ng-week-5/zero-initialisation.png)
+
 - Random Initialisation
 
   - rand(x,y) is just a function in octave that will initialise a matrix of random real numbers between 0 and 1.
 
   - (Note: the epsilon used above is unrelated to the epsilon from Gradient Checking)
+
+  ![Random initialisation.png](/assets/images/ml-andrew-ng-week-5/random-initialisation.png)
 
 - Octave Snippets
 
@@ -172,7 +206,7 @@ Theta2 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
 Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
 ```
 
-## <span style='color:blue'>Putting It Together</span>
+## Putting It Together
 
 - First, pick a network architecture; choose the layout of your neural network, including how many hidden units in each layer and how many layers in total you want to have.
 
@@ -183,6 +217,8 @@ Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
   - Number of hidden units per layer = usually more the better (must balance with cost of computation as it increases with more hidden units)
 
   - Defaults: 1 hidden layer. If you have more than 1 hidden layer, then it is recommended that you have the same number of units in every hidden layer.
+
+  ![Training a Neural Network.png](/assets/images/ml-andrew-ng-week-5/training-a-neural-net.png)
 
 - Training a Neural Network
 
@@ -200,9 +236,15 @@ Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
 
   - Steps 1 - 4
 
+  ![Steps.png](/assets/images/ml-andrew-ng-week-5/steps.png)
+
   - Steps 5 - 6
 
+  ![Steps 1.png](/assets/images/ml-andrew-ng-week-5/steps-1.png)
+
 - However, keep in mind that J ( theta ) s not convex and thus we can end up in a local minimum instead.
+
+![Gradient Descent.png](/assets/images/ml-andrew-ng-week-5/gradient-descent.png)
 
 - Octave Snippets
 
@@ -214,8 +256,10 @@ for i = 1:m,
    (Get activations a(l) and delta terms d(l) for l = 2,...,L
 ```
 
-# <span style='color:green'>Application of Neural Networks</span>
+# Application of Neural Networks
 
-## <span style='color:blue'>Autonomous Driving</span>
+## Autonomous Driving
 
-# <span style='color:green'>Lecture Presentation</span>
+# Lecture Presentation
+
+<embed src="/assets/pdfs/ml-andrew-ng-week-5/ml-andrew-ng-week-5.1.pdf" width="100%" height="600px" type="application/pdf">
