@@ -254,4 +254,4 @@ title: "Machine Learning By Andew Ng - Week 8"
 
 <embed src="/assets/pdfs/ml-andrew-ng-week-8/ml-andrew-ng-week-8.1.pdf" width="100%" height="600px" type="application/pdf">
 
-<embed src="/assets/pdfs/ml-andrew-ng-week-8/ml-andrew-ng-week-8.1.pdf" width="100%" height="600px" type="application/pdf">
+<embed src="/assets/pdfs/ml-andrew-ng-week-8/ml-andrew-ng-week-8.2.pdf" width="100%" height="600px" type="application/pdf">
