@@ -160,7 +160,7 @@ Other: Reinforcement learning, recommender systems.
 
   - Hypothesis is a function given by the algorithm, which when inputed the data gives the suitable output based on the previous data.
 
-![Model Representation.png](/assets/images/model-representation.png)
+![Model Representation.png](/assets/images/ml-andrew-ng-week-1/model-representation.png)
 
 ### Cost Function
 
@@ -176,8 +176,8 @@ Other: Reinforcement learning, recommender systems.
 
   - Reasonable for most of the regression problems
 
-![Cost Function.png](/assets/images/cost-function.png)
-![Plots.png](/assets/images/plots.png)
+![Cost Function.png](/assets/images/ml-andrew-ng-week-1/cost-function.png)
+![Plots.png](/assets/images/ml-andrew-ng-week-1/plots.png)
 
 ### Intuition 1
 
@@ -189,29 +189,29 @@ Other: Reinforcement learning, recommender systems.
 
   - Taking theta0 = 0 and changing the values of theta 1 to minimise the cost function.
 
-  ![First Value.png](/assets/images/first-value.png)
+  ![First Value.png](/assets/images/ml-andrew-ng-week-1/first-value.png)
 
 - First value : theta1 = 1
 
-  ![First Value.png](/assets/images/first-value.png)
+  ![First Value.png](/assets/images/ml-andrew-ng-week-1/first-value.png)
 
 - Second value : theta1 = 0.5
 
-  ![Second Value.png](/assets/images/second-value.png)
+  ![Second Value.png](/assets/images/ml-andrew-ng-week-1/second-value.png)
 
 - Third value : theta1 = 0
 
-  ![Third Value.png](/assets/images/third-value.png)
+  ![Third Value.png](/assets/images/ml-andrew-ng-week-1/third-value.png)
 
 - We can plot different value using the function and then select the one which is of the least i.e minimise theta 1
 
-  ![Final.png](/assets/images/final.png)
+  ![Final.png](/assets/images/ml-andrew-ng-week-1/final.png)
 
 ### Intuition 2
 
 - When calculating the cost function with two parameters the plot is in 3d graph.
 
-  ![Plot of cost function with two paramenters.png](/assets/images/plot-of-cost-function-with-two-parameters.png)
+  ![Plot of cost function with two paramenters.png](/assets/images/ml-andrew-ng-week-1/plot-of-cost-function-with-two-parameters.png)
 
 - It is also called as the convex function.
 
@@ -223,15 +223,15 @@ Other: Reinforcement learning, recommender systems.
 
 - Hypothesis 1
 
-  ![Hypothesis 1.png](/assets/images/hypothesis-1.png)
+  ![Hypothesis 1.png](/assets/images/ml-andrew-ng-week-1/hypothesis-1.png)
 
 - Hypothesis 2
 
-  ![Hypothesis 2.png](/assets/images/hypothesis-2.png)
+  ![Hypothesis 2.png](/assets/images/ml-andrew-ng-week-1/hypothesis-2.png)
 
 - Hypothesis 3
 
-  ![Hypothesis 3.png](/assets/images/hypothesis-3.png)
+  ![Hypothesis 3.png](/assets/images/ml-andrew-ng-week-1/hypothesis-3.png)
 
 ## Parameter Learning
 
@@ -241,7 +241,7 @@ Other: Reinforcement learning, recommender systems.
 
   - we want the minimum of that function
 
-  ![Goal.png](/assets/images/goal.png)
+  ![Goal.png](/assets/images/ml-andrew-ng-week-1/goal.png)
 
 - Example
 
@@ -253,7 +253,7 @@ Other: Reinforcement learning, recommender systems.
 
   - But if we change the initial point, we can reach at different points or also called as local minimum.
 
-  ![Gradient Descent.png](/assets/images/gradient-descent.png)
+  ![Gradient Descent.png](/assets/images/ml-andrew-ng-week-1/gradient-descent.png)
 
 - Formula
 
@@ -267,7 +267,7 @@ Other: Reinforcement learning, recommender systems.
 
   - Simultaneous update is required
 
-  ![Formula.png](/assets/images/formula.png)
+  ![Formula.png](/assets/images/ml-andrew-ng-week-1/formula.png)
 
 ### Intuition
 
@@ -275,7 +275,7 @@ Other: Reinforcement learning, recommender systems.
 
   - The following graph shows that when the slope is negative, the value of theta1​ increases and when it is positive, the value of theta1​ decreases.
 
-  ![Example With 1 Parameter.png](/assets/images/example-with-1-parameter.png)
+  ![Example With 1 Parameter.png](/assets/images/ml-andrew-ng-week-1/example-with-1-parameter.png)
 
 - Behavior change due to size of learning rate ( alpha )
 
@@ -289,7 +289,7 @@ Other: Reinforcement learning, recommender systems.
 
     - it may fail to or converge even diverge
 
-  ![Size of Alpha.png](/assets/images/size-of-alpha.png)
+  ![Size of Alpha.png](/assets/images/ml-andrew-ng-week-1/size-of-alpha.png)
 
 - What will happen if it reaches the local minimum ?
 
@@ -297,7 +297,7 @@ Other: Reinforcement learning, recommender systems.
 
   - So the derivate will be zero and there will no change
 
-  ![Local minimum.png](/assets/images/local-minimum.png)
+  ![Local minimum.png](/assets/images/ml-andrew-ng-week-1/local-minimum.png)
 
 - What if the value of alpha is fixed ?
 
@@ -307,7 +307,7 @@ Other: Reinforcement learning, recommender systems.
 
   - No need to decrease alpha over time
 
-  ![Fixed alpha.png](/assets/images/fixed-alpha.png)
+  ![Fixed alpha.png](/assets/images/ml-andrew-ng-week-1/fixed-alpha.png)
 
   ### Gradient Descent For Linear Regression
 
@@ -321,13 +321,13 @@ Other: Reinforcement learning, recommender systems.
 
     - Minimise the cost function of linear regression using gradient descent
 
-    ![Concept.png](/assets/images/concept.png)
+    ![Concept.png](/assets/images/ml-andrew-ng-week-1/concept.png)
 
 - Proof
 
   - Deriving the values of the parameters (theta0 and theta1)
 
-  ![Proof.png](/assets/images/proof.png)
+  ![Proof.png](/assets/images/ml-andrew-ng-week-1/proof.png)
 
 - Modified Algorithm
 
@@ -335,13 +335,13 @@ Other: Reinforcement learning, recommender systems.
 
     - updating parameters simultaneously is needed
 
-  ![Modified Algorithm.png](/assets/images/modified-algorithm.png)
+  ![Modified Algorithm.png](/assets/images/ml-andrew-ng-week-1/modified-algorithm.png)
 
 - Results Of Gradient Descent
 
   - Linear regression has no local minimum, only one global minimum.
 
-  ![Result of GD.png](/assets/images/result-of-gd.png)
+  ![Result of GD.png](/assets/images/ml-andrew-ng-week-1/result-of-gd.png)
 
 - Batch Gradient Descent
 
@@ -349,7 +349,7 @@ Other: Reinforcement learning, recommender systems.
 
   - The name "Batch" is given because it uses all the training examples.
 
-  ![Batch GD.png](/assets/images/batch-gd.png)
+  ![Batch GD.png](/assets/images/ml-andrew-ng-week-1/batch-gd.png)
 
 # Linear Algebra
 
@@ -361,7 +361,7 @@ Other: Reinforcement learning, recommender systems.
 
   - Dimension of matrix = number of rows x number of columns
 
-  ![Matrix.png](/assets/images/matrix.png)
+  ![Matrix.png](/assets/images/ml-andrew-ng-week-1/matrix.png)
 
 - Elements Of Matrices
 
@@ -369,13 +369,13 @@ Other: Reinforcement learning, recommender systems.
 
   - i th term = row && j th term = column
 
-  ![Elements of Matrix.png](/assets/images/elements-of-matrix.png)
+  ![Elements of Matrix.png](/assets/images/ml-andrew-ng-week-1/elements-of-matrix.png)
 
 - Vectors
 
   - It a a matrix with on column and 'n' rows.
 
-  ![Vectors.png](/assets/images/vectors.png)
+  ![Vectors.png](/assets/images/ml-andrew-ng-week-1/vectors.png)
 
 - In general, all our vectors and matrices will be 1-indexed. Note that for some programming languages, the arrays are 0-indexed.
 
@@ -415,19 +415,19 @@ A_23 = A(2,3)
 
   - Size of the output matrix would be same as the input matrix
 
-  ![Matrix Addition.png](/assets/images/matrix-addition.png)
+  ![Matrix Addition.png](/assets/images/ml-andrew-ng-week-1/matrix-addition.png)
 
 - Scalar Multiplication || Division
 
   - Scalar gets multiplied or divided to each and every element of the matrix
 
-  ![Scalar Multiplication.png](/assets/images/scalar-multiplication.png)
+  ![Scalar Multiplication.png](/assets/images/ml-andrew-ng-week-1/scalar-multiplication.png)
 
 - Combination of Operands
 
   - Many operations can be combined
 
-  ![Combination Of Operands.png](/assets/images/combination-of-operands.png)
+  ![Combination Of Operands.png](/assets/images/ml-andrew-ng-week-1/combination-of-operands.png)
 
 - Octave/Matlab Snippet
 
@@ -463,17 +463,17 @@ add_As = A + s
 
   - The result is a vector. The number of columns of the matrix must equal the number of rows of the vector.
 
-  ![Example 1.png](/assets/images/example-1.png)
+  ![Example 1.png](/assets/images/ml-andrew-ng-week-1/example-1.png)
 
 - Details
 
   - An m x n matrix multiplied by an n x 1 vector results in an m x 1 vector.
 
-  ![Details.png](/assets/images/details.png)
+  ![Details.png](/assets/images/ml-andrew-ng-week-1/details.png)
 
 - Example 2
 
-  ![Example 2.png](/assets/images/example-2.png)
+  ![Example 2.png](/assets/images/ml-andrew-ng-week-1/example-2.png)
 
 - Hypothesis Trick
 
@@ -485,7 +485,7 @@ add_As = A + s
 
   - Output would be the predictions from the hypothesis
 
-  ![Hypothesis Trick.png](/assets/images/hypothesis-trick.png)
+  ![Hypothesis Trick.png](/assets/images/ml-andrew-ng-week-1/hypothesis-trick.png)
 
 - Octave/Matlab Snippet
 
@@ -508,7 +508,7 @@ Av = A * v
 
   - multiply two matrices by breaking it into several vector multiplications and concatenating the result.
 
-  ![Ex 1.png](/assets/images/ex-1.png)
+  ![Ex 1.png](/assets/images/ml-andrew-ng-week-1/ex-1.png)
 
 - Details
 
@@ -516,17 +516,17 @@ Av = A * v
 
   - To multiply two matrices, the number of columns of the first matrix must equal the number of rows of the second matrix.
 
-  ![Detail.png](/assets/images/detail.png)
+  ![Detail.png](/assets/images/ml-andrew-ng-week-1/detail.png)
 
 - Example 2
 
-  ![Ex 2.png](/assets/images/ex-2.png)
+  ![Ex 2.png](/assets/images/ml-andrew-ng-week-1/ex-2.png)
 
 - Hypothesis Trick
 
   - Multiple hypothesis can be calculated using matrix matrix multiplication
 
-  ![Hypo Trick.png](/assets/images/hypo-trick.png)
+  ![Hypo Trick.png](/assets/images/ml-andrew-ng-week-1/hypo-trick.png)
 
 - Octave/Matlab Snippets
 
@@ -553,7 +553,7 @@ mult_AB = A*B
 
     - A _ B ≠ B _ A
 
-  ![Commutative.png](/assets/images/commutative.png)
+  ![Commutative.png](/assets/images/ml-andrew-ng-week-1/commutative.png)
 
 - Associative
 
@@ -561,7 +561,7 @@ mult_AB = A*B
 
     - (A _ B) _ C = A _ (B _ C)
 
-  ![Associative.png](/assets/images/associative.png)
+  ![Associative.png](/assets/images/ml-andrew-ng-week-1/associative.png)
 
 - Identity Matrix
 
@@ -571,7 +571,7 @@ mult_AB = A*B
 
   - When multiplying the identity matrix before some other matrix (I∗A), the square identity matrix's dimension should match the other matrix's rows.
 
-  ![Identity Matrix.png](/assets/images/identity-matrix.png)
+  ![Identity Matrix.png](/assets/images/ml-andrew-ng-week-1/identity-matrix.png)
 
 - Octave/Matlab Snippet
 
@@ -612,13 +612,13 @@ BA = B*A
 
   - Matrices that don't have an inverse are called singular or degenerate.
 
-  ![Inverse.png](/assets/images/inverse.png)
+  ![Inverse.png](/assets/images/ml-andrew-ng-week-1/inverse.png)
 
 - Transpose
 
   - The transposition of a matrix is like rotating the matrix 90° in clockwise direction and then reversing it.
 
-  ![Transpose.png](/assets/images/transpose.png)
+  ![Transpose.png](/assets/images/ml-andrew-ng-week-1/transpose.png)
 
 - Octave/Matlab Snippet
 
@@ -642,8 +642,8 @@ A_invA = inv(A)*A
 
 # Lecture Presentation
 
-<embed src="/assets/pdfs/andrew-ng-ml-week-1.1.pdf" width="100%" height="600px" type="application/pdf">
----
-<embed src="/assets/pdfs/andrew-ng-ml-week-1.2.pdf" width="100%" height="600px" type="application/pdf">
----
-<embed src="/assets/pdfs/andrew-ng-ml-week-1.3.pdf" width="100%" height="600px" type="application/pdf">
+<embed src="/assets/pdfs/ml-andrew-ng-week-1/andrew-ng-ml-week.1.pdf" width="100%" height="600px" type="application/pdf">
+
+<embed src="/assets/pdfs/ml-andrew-ng-week-1/andrew-ng-ml-week-1.2.pdf" width="100%" height="600px" type="application/pdf">
+
+<embed src="/assets/pdfs/ml-andrew-ng-week-1/andrew-ng-ml-week-1.3.pdf" width="100%" height="600px" type="application/pdf">
