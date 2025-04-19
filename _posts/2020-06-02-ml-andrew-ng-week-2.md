@@ -2,7 +2,7 @@
 title: "Machine Learning By Andew Ng - Week 2"
 ---
 
-# <span style='color:green'>Multivariate Linear Regression</span>
+# Multivariate Linear Regression
 
 ## Multiple Features
 
@@ -12,21 +12,31 @@ title: "Machine Learning By Andew Ng - Week 2"
 
   - For the example of predicting the price of a house, features can be no. of bedrooms, no. of floors, age of home, size.
 
+![Multi-vartiate.png](/assets/images/ml-andrew-ng-week-2/multi-variate.png)
+
 - Hypothesis
 
   - Number of parameters with their effect on the price of the house
+
+  ![Hypothesis.png](/assets/images/ml-andrew-ng-week-2/hypothesis.png)
 
   - Taking x-zero as 1 for the convenience of notation
 
   - This is called as the Multivariate Linear Regression.
 
-  ## <span style='color:blue'>Gradient Descent for Multiple Variables</span>
+  ![Hypothesis-extended.png](/assets/images/ml-andrew-ng-week-2/hypothesis-extended.png)
+
+  ## Gradient Descent for Multiple Variables
 
   - Concept
 
+    ![Concept.png](/assets/images/ml-andrew-ng-week-2/concept.png)
+
   - Comparison between Gradient Descent with one variable and Gradient Descent with multiple variable
 
-  ## <span style='color:blue'>Gradient Descent In Practice I - Feature Scaling</span>
+    ![Modified Algorithm.png](/assets/images/ml-andrew-ng-week-2/modified-algorithm.png)
+
+  ## Gradient Descent In Practice I - Feature Scaling
 
   - Features Scaling
 
@@ -40,11 +50,15 @@ title: "Machine Learning By Andew Ng - Week 2"
 
     - If the features are on the similar scale, contours would be spaced and gradient descent would take less iteration to converge
 
+    ![Feature Scaling 1.png](/assets/images/ml-andrew-ng-week-2/feature-scaling-1.png)
+
     - Feature should range between -1 ≤ x ≤ 1
 
       - +3, -3 = max
 
       - 1/3, -1/3 = min
+
+    ![Feature Scaling 2.png](/assets/images/ml-andrew-ng-week-2/feature-scaling-2.png)
 
   - Mean Normalisation
 
@@ -56,11 +70,15 @@ title: "Machine Learning By Andew Ng - Week 2"
 
     - x = x - average value on training set / s - range ( max - min )
 
-## <span style='color:blue'>Gradient Descent In Practice II - Learning Rate</span>
+      ![Mean Normalisation.png](/assets/images/ml-andrew-ng-week-2/mean-normalisation.png)
+
+## Gradient Descent In Practice II - Learning Rate
 
 - "Debugging": How to make sure gradient descent is working correctly
 
   - Plot the graph, on x-axis is the iteration and on y-axis value of cost function
+
+    ![Working Graph of GD.png](/assets/images/ml-andrew-ng-week-2/working-graph-of-gd.png)
 
   - Automatic convergence test can be implemented
 
@@ -70,6 +88,8 @@ title: "Machine Learning By Andew Ng - Week 2"
 
   - It has been proven that if learning rate α is sufficiently small, then J(θ) will decrease on every iteration.
 
+  ![Learning Rate.png](/assets/images/ml-andrew-ng-week-1/learning-rate.png)
+
   - Summary
 
     - Try with some range of values
@@ -78,11 +98,15 @@ title: "Machine Learning By Andew Ng - Week 2"
 
     - alpha is too large : may not decrease on every iteration, may not even converge
 
-## <span style='color:blue'>Features and Polynomial Regression</span>
+    ![Summary.png](/assets/images/ml-andrew-ng-week-2/summary.png)
+
+## Features and Polynomial Regression
 
 - We can improve our features and the form of our hypothesis function in a couple different ways.
 
 - We can **combine** multiple features into one. For example, we can combine x-1 and x-2 into a new feature x-3 by taking x-1 \* x-2.
+
+  ![HPP Example.png](/assets/images/ml-andrew-ng-week-2/hpp-example.png)
 
 - Polynomial Regression
 
@@ -92,9 +116,13 @@ title: "Machine Learning By Andew Ng - Week 2"
 
   - Quadratic function comes down eventually which is not applicable in this example. Prices can't go down with increase in size of the house.
 
+  ![Polynomial Regression.png](/assets/images/ml-andrew-ng-week-2/polynomial-regression.png)
+
 - Choice Of Features
 
   - One important thing to keep in mind is, if you choose your features this way then feature scaling becomes very important.
+
+  ![Choice of Features.png](/assets/images/ml-andrew-ng-week-2/choice-of-features.png)
 
 # Computing Parameters Analytically
 
@@ -106,15 +134,21 @@ title: "Machine Learning By Andew Ng - Week 2"
 
 - Intuition
 
+  ![Intuition 1.png](/assets/images/ml-andrew-ng-week-2/intuition-1.png)
+
 - Example
 
   - X - features matrix
 
   - y - output matrix
 
+  ![Example.png](/assets/images/ml-andrew-ng-week-2/example.png)
+
   - m examples, n features
 
   - X - also called as design matrix
+
+  ![Example Explained.png](/assets/images/ml-andrew-ng-week-2/example-explained.png)
 
   - Feature Scaling is not needed while using normal equation method
 
@@ -124,15 +158,21 @@ title: "Machine Learning By Andew Ng - Week 2"
 pinv( X' * X ) * X' * y
 ```
 
+![Example Explained Extended.png](/assets/images/ml-andrew-ng-week-2/example-explained-extended.png)
+
 - Comparison Between Gradient Descent & Normal Equation
 
-  - n = Normal Equation < 10000 > Gradient Descent
+  - n = Normal Equation Gradient Descent
 
   - For some algorithms, normal equation method doesn't work
 
-## <span style='color:blue'>Normal Equation Noninvertibility</span>
+  ![Comparison GD & NE.png](/assets/images/ml-andrew-ng-week-2/comparison-gd-ne.png)
+
+## Normal Equation Noninvertibility
 
 - When implementing the normal equation in octave we want to use the 'pinv' function rather than 'inv.' The 'pinv' function will give you a value of θ even if X^T \* X is not invertible.
+
+  ![Noninvertible.png](/assets/images/ml-andrew-ng-week-2/noninvertible.png)
 
 - Reasons for Noninvertibility
 
@@ -144,4 +184,9 @@ pinv( X' * X ) * X' * y
 
   - deleting a feature that is linearly dependent with another or deleting one or more features when there are too many features.
 
-# <span style='color:blue'>Lecture Presentation</span>
+![Reason NI.png](/assets/images/ml-andrew-ng-week-2/reasons-ni.png)
+
+# Lecture Presentation
+
+<embed src="/assets/pdfs/ml-andrew-ng-week-2/andrew-ng-ml-week-2.1.pdf" width="100%" height="600px" type="application/pdf">
+<embed src="/assets/pdfs/ml-andrew-ng-week-2/andrew-ng-ml-week-2.2.pdf" width="100%" height="600px" type="application/pdf">
