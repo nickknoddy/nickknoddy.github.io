@@ -2,13 +2,15 @@
 title: "Machine Learning By Andew Ng - Week 10"
 ---
 
-# <span style='color:green'>Gradient Descent with Large Datasets </span>
+# Gradient Descent with Large Datasets
 
-## <span style='color:blue'>Learning With Large Datasets </span>
+## Learning With Large Datasets
 
 - Machine Learning and Data
 
   > It's not who has the best algorithm that wins. It's who has the most data.
+
+  ![Machine Learning and Data.png](/assets/images/ml-andrew-ng-week-10/machine-learning-and-data.png)
 
 - Learning With Large Datasets
 
@@ -18,11 +20,15 @@ title: "Machine Learning By Andew Ng - Week 10"
 
   - If the learning curve is high bias then more data feeding will not be helpful
 
-## <span style='color:blue'>Stochastic Gradient Descent</span>
+  ![Learning with Large Datasets.png](/assets/images/ml-andrew-ng-week-10/learning-with-large-datasets.png)
+
+## Stochastic Gradient Descent
 
 - Linear Regression with Gradient Descent
 
   - Recap
+
+  ![LR with GD.png](/assets/images/ml-andrew-ng-week-10/lr-with-gd.png)
 
   - Previous from of gradient descent would iterate all the training examples and sum them to take one step of descent
 
@@ -30,7 +36,11 @@ title: "Machine Learning By Andew Ng - Week 10"
 
   - That is also called as " Batch Gradient Descent ", because it uses all the training data
 
+  ![LR with GD 1.png](/assets/images/ml-andrew-ng-week-10/lr-with-gd-1.png)
+
 - Batch Gradient Descent vs Stochastic Gradient Descent
+
+  ![Batch GD vs Stochastic GD.png](/assets/images/ml-andrew-ng-week-10/batch-gd-vs-stochastic-gd.png)
 
 - Stochastic Gradient Descent
 
@@ -44,7 +54,9 @@ title: "Machine Learning By Andew Ng - Week 10"
 
   - Steps are in variation to each other and in whole picture, it is moving towards the global minimum
 
-## <span style='color:blue'>Mini-Batch Gradient Descent</span>
+  ![Stochastic Gradient Descent.png](/assets/images/ml-andrew-ng-week-10/stochastic-gradient-descent.png)
+
+## Mini-Batch Gradient Descent
 
 - Comparison between different gradient descent
 
@@ -53,6 +65,8 @@ title: "Machine Learning By Andew Ng - Week 10"
   - Stochastic Gradient Descent ⇒ Use 1 example in each iteration
 
   - Mini-batch Gradient Descent ⇒ Use b examples in each iteration
+
+  ![Comparison.png](/assets/images/ml-andrew-ng-week-10/comparison.png)
 
 - Mini-Batch Gradient Descent
 
@@ -64,13 +78,17 @@ title: "Machine Learning By Andew Ng - Week 10"
 
   - If vectorisation implemented efficiently it can be faster than the stochastic gradient descent, because of the parallelism used in operations
 
-## <span style='color:blue'>Stochastic Gradient Descent Convergence </span>
+  ![Mini-Batch Gradient Descent.png](/assets/images/ml-andrew-ng-week-10/mini-batch-gradient-descent.png)
+
+## Stochastic Gradient Descent Convergence
 
 - Checking for Convergence
 
   - During learning compute cost function before updating parameter
 
   - Every 1000 iteration ( say ), plot cost function averaged over the last 1000 examples processed by algorithm
+
+  ![Checking for Convergence.png](/assets/images/ml-andrew-ng-week-10/checking-for-convergence-.png)
 
   - Examples
 
@@ -79,6 +97,8 @@ title: "Machine Learning By Andew Ng - Week 10"
     - If cost seems to increase increase, it means the algorithm has diverge.
 
       - Using smaller learning rate will solve the problem
+
+    ![Examples.png](/assets/images/ml-andrew-ng-week-10/examples.png)
 
 - Tuning Learning Rate in Stochastic Gradient Descent
 
@@ -90,9 +110,11 @@ title: "Machine Learning By Andew Ng - Week 10"
 
   - Small learning rate will result in not oscillating around the global minimum and to converge
 
-# <span style='color:green'>Advanced Topics </span>
+  ![SGD Learning Rate.png](/assets/images/ml-andrew-ng-week-10/sgd-learning-rate.png)
 
-## <span style='color:blue'>Online Learning </span>
+# Advanced Topics
+
+## Online Learning
 
 - Online Learning
 
@@ -107,6 +129,8 @@ title: "Machine Learning By Andew Ng - Week 10"
   - There is continuous stream data flowing which is used to train once and then the data is discarded
 
   - Online learning can adapt to changing user performance
+
+  ![Online Learning.png](/assets/images/ml-andrew-ng-week-10/online-learning-.png)
 
 - Examples
 
@@ -130,7 +154,9 @@ title: "Machine Learning By Andew Ng - Week 10"
 
   - Product recommendation
 
-## <span style='color:blue'>Map Reduce and Data Parallelism</span>
+  ![Online Learning Example.png](/assets/images/ml-andrew-ng-week-10/online-learning-example.png)
+
+## Map Reduce and Data Parallelism
 
 - Map Reduce
 
@@ -138,13 +164,19 @@ title: "Machine Learning By Andew Ng - Week 10"
 
   - Network latency has to be considered
 
+  ![Map Reduce.png](/assets/images/ml-andrew-ng-week-10/map-reduce.png)
+
   - Concept
 
     - Workflow of Map Reduce
 
+    ![Concept.png](/assets/images/ml-andrew-ng-week-10/concept.png)
+
   - Map Reduce and summation over the training set
 
     - Many learning algorithms can be expressed as computing sums of functions over the training set
+
+    ![Map Reduce 1.png](/assets/images/ml-andrew-ng-week-10/map-reduce-1.png)
 
   - Multi Core Machines
 
@@ -152,4 +184,8 @@ title: "Machine Learning By Andew Ng - Week 10"
 
     - Factor of Network latency is diminished, because all the operations are performed in the same machine
 
-# <span style='color:green'>Lecture Presentations</span>
+    ![Multi Core Machines.png](/assets/images/ml-andrew-ng-week-10/multi-core-machines.png)
+
+# Lecture Presentations
+
+<embed src="/assets/pdfs/ml-andrew-ng-week-10/ml-andrew-ng-week-10.1.pdf" width="100%" height="600px" type="application/pdf">
